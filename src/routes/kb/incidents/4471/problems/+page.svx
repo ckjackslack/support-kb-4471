@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 reviewed: two date problems in one ticket'
 owner: ckjackslack
-status: investigated
+status: closed
 reviewed: 2026-10-28
 signature: 'v1.eyJzdWIiOiI5OTEwIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyMjI3MTcsImV4cCI6MTc5MzMwOTExN30._FdsrSFVDltIxBgZxZP8Zhg1wj7fm2sPIbfES7ZUh9Q'
 ---
@@ -20,8 +20,21 @@ signature: 'v1.eyJzdWIiOiI5OTEwIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpY
 </script>
 
 The [original incident page](/kb/incidents/4471) says one issue and one fix queued. Its own
-rendered cause table contradicts that conclusion. The ticket holds two problems, and one fix
-does not close both.
+rendered cause table contradicts that conclusion. The ticket held two problems, and one fix
+did not close both.
+
+## What the desk did with the ticket
+
+The desk's engineering update, read on 28 October 2026, says **#4471 closed 05 oct**:
+
+- **Parser — fixed:** `fix(dates): parse dd/mm for eu locales`. [Ticket #1](https://github.com/ckjackslack/support-kb-4471/issues/1) is closed as completed.
+- **Hint — won't fix:** `booking-v3 form retired`. [Ticket #2](https://github.com/ckjackslack/support-kb-4471/issues/2) is closed as not planned.
+
+The update is the desk's own account of the ticket after the export this page reads. The
+export is dated 4 October 2026, so the counts below are that snapshot and not a live
+queue. A closed ticket is not a claim that every report in it was resolved: the update
+does not mention the five reports the desk read as a one-day move, and they stay open
+questions below.
 
 <Callout kind="warn">
 Keep the shared parser and the booking-v3 hint apart. Intake's tag and a matching subject
@@ -57,17 +70,15 @@ reads the date the tenant's way. Same symptom, different cause, different fix: t
 the parser disagree about the same field. These are the form reports of the booking-v3
 tenants.
 
-## What the desk should do
+## What the desk did
 
-- Split #4471 into two tickets, one per problem, each with the count in the table above.
-- Fix the parser to read the tenant's date order instead of month first.
-- Fix booking-v3: it prints MM/DD/YYYY to tenants who write the day first.
-- Record a new decision. The merge rule in
-  [decision 0001](/kb/decisions/0001-dedupe-by-subject) merges on the subject line, and a
-  subject line cannot tell a swapped date from a shifted one. A decision is never edited
-  after it is accepted, so this one is replaced, not corrected.
-- Look at the open questions above. They are counted in the parser group, where the desk
-  files them, and no root cause is established for them yet.
+- The parser now reads the tenant's date order. Ticket #1 is closed as completed.
+- booking-v3 is retired, so the form no longer prints MM/DD/YYYY to a tenant that writes
+  the day first. Ticket #2 is closed as not planned, which is not a delivered fix.
+- The merge rule in [decision 0001](/kb/decisions/0001-dedupe-by-subject) still merges on
+  the subject line, and a subject line cannot tell a swapped date from a shifted one. A
+  decision is never edited after it is accepted, so a new record replaces it.
+- The five open questions below are not in the update, and stay open.
 
 ## Lessons
 

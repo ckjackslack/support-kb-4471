@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="../../../_app/immutable/entry/start.lTPiaQYX.js" rel="modulepreload">
+    <link href="../../../_app/immutable/entry/start.B3HUR0TB.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/BQfMM7Jv.js" rel="modulepreload">
-		<link href="../../../_app/immutable/chunks/DWP0pC8I.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/CKX5PPN4.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/BWUdTF5t.js" rel="modulepreload">
-		<link href="../../../_app/immutable/entry/app.CcOGH15u.js" rel="modulepreload">
+		<link href="../../../_app/immutable/entry/app.BRxH8Ox9.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/D37ruAJc.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/t1zubgls.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/C-ggmPc3.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/CWCEDZjb.js" rel="modulepreload">
 		<link href="../../../_app/immutable/nodes/0.CwQmFXlZ.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/BqcJOarN.js" rel="modulepreload">
-		<link href="../../../_app/immutable/nodes/5.hdX65t8J.js" rel="modulepreload">
-		<link href="../../../_app/immutable/chunks/BqBBw2re.js" rel="modulepreload">
+		<link href="../../../_app/immutable/nodes/5.BejALSLf.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/iNMyEEEk.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/B7okSU-D.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/SwkR7CaB.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/BypDfxWf.js" rel="modulepreload">
@@ -26,9 +26,13 @@
 		<link href="../../../_app/immutable/assets/5.C84CXHzy.css" rel="stylesheet">
   </head>
   <body data-sveltekit-preload-data="hover">
-    <div style="display: contents"><!--[--><!--[0--><!--[--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 reviewed: two date problems in one ticket</h1> <p class="meta svelte-e2jw2j"><span>owner <b>ckjackslack</b></span> <span class="status investigated svelte-e2jw2j">investigated</span> <span class="svelte-e2jw2j">reviewed 2026-10-28 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p>The <a href="/kb/incidents/4471">original incident page</a> says one issue and one fix queued. Its own
-rendered cause table contradicts that conclusion. The ticket holds two problems, and one fix
-does not close both.</p> <aside class="warn svelte-17bri61"><!---->Keep the shared parser and the booking-v3 hint apart. Intake's tag and a matching subject
+    <div style="display: contents"><!--[--><!--[0--><!--[--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 reviewed: two date problems in one ticket</h1> <p class="meta svelte-e2jw2j"><span>owner <b>ckjackslack</b></span> <span class="status closed svelte-e2jw2j">closed</span> <span class="svelte-e2jw2j">reviewed 2026-10-28 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p>The <a href="/kb/incidents/4471">original incident page</a> says one issue and one fix queued. Its own
+rendered cause table contradicts that conclusion. The ticket held two problems, and one fix
+did not close both.</p> <h2>What the desk did with the ticket</h2> <p>The desk’s engineering update, read on 28 October 2026, says <strong>#4471 closed 05 oct</strong>:</p> <ul><li><strong>Parser — fixed:</strong> <code>fix(dates): parse dd/mm for eu locales</code>. <a href="https://github.com/ckjackslack/support-kb-4471/issues/1" rel="nofollow">Ticket #1</a> is closed as completed.</li> <li><strong>Hint — won’t fix:</strong> <code>booking-v3 form retired</code>. <a href="https://github.com/ckjackslack/support-kb-4471/issues/2" rel="nofollow">Ticket #2</a> is closed as not planned.</li></ul> <p>The update is the desk’s own account of the ticket after the export this page reads. The
+export is dated 4 October 2026, so the counts below are that snapshot and not a live
+queue. A closed ticket is not a claim that every report in it was resolved: the update
+does not mention the five reports the desk read as a one-day move, and they stay open
+questions below.</p> <aside class="warn svelte-17bri61"><!---->Keep the shared parser and the booking-v3 hint apart. Intake's tag and a matching subject
 line are not proof of a shared cause. The counts below are computed from unique report ids,
 the tenant directory and the supplied cause rules.<!----></aside><!----> <h2>What the desk filed</h2> <p>The desk merges on the subject line alone, the rule in <a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a>. #4471 now holds more than one subject
 line, so it holds more than that rule allows. This is what the desk’s own logic makes of the
@@ -45,22 +49,22 @@ wrong day. These are the app, email and booking-v2 form reports.</p> <p><strong>
 day-first tenant reads that hint and types the month first, as it was told to, and the form
 reads the date the tenant’s way. Same symptom, different cause, different fix: the form and
 the parser disagree about the same field. These are the form reports of the booking-v3
-tenants.</p> <h2>What the desk should do</h2> <ul><li>Split #4471 into two tickets, one per problem, each with the count in the table above.</li> <li>Fix the parser to read the tenant’s date order instead of month first.</li> <li>Fix booking-v3: it prints MM/DD/YYYY to tenants who write the day first.</li> <li>Record a new decision. The merge rule in <a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a> merges on the subject line, and a
-subject line cannot tell a swapped date from a shifted one. A decision is never edited
-after it is accepted, so this one is replaced, not corrected.</li> <li>Look at the open questions above. They are counted in the parser group, where the desk
-files them, and no root cause is established for them yet.</li></ul> <h2>Lessons</h2> <ul><li>One ticket can hold more than one bug. Merge early, count once, but split by cause.</li> <li>A duplicate is one id. The export gives the same report more than once.</li> <li>A tag from intake is a guess. Read the tenant, and read the form the tenant runs.</li></ul> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-W05C-MR14</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!----><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+tenants.</p> <h2>What the desk did</h2> <ul><li>The parser now reads the tenant’s date order. Ticket #1 is closed as completed.</li> <li>booking-v3 is retired, so the form no longer prints MM/DD/YYYY to a tenant that writes
+the day first. Ticket #2 is closed as not planned, which is not a delivered fix.</li> <li>The merge rule in <a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a> still merges on
+the subject line, and a subject line cannot tell a swapped date from a shifted one. A
+decision is never edited after it is accepted, so a new record replaces it.</li> <li>The five open questions below are not in the update, and stay open.</li></ul> <h2>Lessons</h2> <ul><li>One ticket can hold more than one bug. Merge early, count once, but split by cause.</li> <li>A duplicate is one id. The export gives the same report more than once.</li> <li>A tag from intake is a guess. Read the tenant, and read the form the tenant runs.</li></ul> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-W05C-MR14</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!----><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
 			
 			<script>
 				{
-					__sveltekit_g6it79 = {
+					__sveltekit_1cix8gl = {
 						base: new URL("../../..", location).pathname.slice(0, -1)
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("../../../_app/immutable/entry/start.lTPiaQYX.js"),
-						import("../../../_app/immutable/entry/app.CcOGH15u.js")
+						import("../../../_app/immutable/entry/start.B3HUR0TB.js"),
+						import("../../../_app/immutable/entry/app.BRxH8Ox9.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 5],
