@@ -44,8 +44,18 @@ holds. It is signed: its frontmatter carries the `signature` the course gave, an
 with `<RenderStamp {signature} />`, so the desk can tell who wrote it.
 
 `src/lib/kb/ProblemsTable.svelte` computes the split. It calls the desk's own logic
-(`groupByCause`, `readAs`, `uniqueById`), so the counts cannot drift away from the pages
-already in here. The three tickets for the split are filed as issues in this repository.
+(`groupByCause`, `uniqueById`), so the counts cannot drift away from the pages already in
+here. The ticket holds **two** problems, and the two tickets for them are filed as issues
+in this repository:
+
+| issue | problem | reports |
+|---|---|---|
+| #1 | the shared parser reads every date month first | 379 |
+| #2 | booking-v3 prints MM/DD/YYYY to tenants who write the day first | 33 |
+
+379 + 33 = 412, every report in #4471. The five reports the desk read as a one-day move
+stay counted in the parser group, where the desk files them; the page and issue #1 list
+them as open questions, with their own words, and no root cause is claimed for them.
 
 The export ships without an app shell, so this repository adds one: SvelteKit with mdsvex,
 the same `#lib` alias the pages import, and a static adapter.
@@ -57,5 +67,12 @@ npm run preview    # serves the site
 ```
 
 `build/` is committed, so the page opens straight from the repository.
-`rendered/kb-4471-problems.png` is that page as the desk sees it.
+`rendered/kb-4471-problems.html` is that page as one self-contained file, with the CSS
+inlined and no scripts, and `rendered/kb-4471-problems.png` is the screenshot of it.
+
+```
+node scripts/analyze.mjs   # recomputes the split, writes evidence/ and issues/
+node scripts/render.mjs    # rewrites rendered/ from build/
+```
+
 

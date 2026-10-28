@@ -1,8 +1,8 @@
 ---
 layout: runbook
-title: '#4471 · what it really holds'
-owner: support desk
-status: open
+title: '#4471 reviewed: two date problems in one ticket'
+owner: ckjackslack
+status: investigated
 reviewed: 2026-10-28
 signature: 'v1.eyJzdWIiOiI5OTEwIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyMjI3MTcsImV4cCI6MTc5MzMwOTExN30._FdsrSFVDltIxBgZxZP8Zhg1wj7fm2sPIbfES7ZUh9Q'
 ---
@@ -14,61 +14,59 @@ signature: 'v1.eyJzdWIiOiI5OTEwIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpY
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
 </script>
 
-#4471 is closed as one known issue, with one fix queued. The reports it holds are not one
-issue. They are three, and each of them needs its own fix, so the ticket has to split.
+The [original incident page](/kb/incidents/4471) says one issue and one fix queued. Its own
+rendered cause table contradicts that conclusion. The ticket holds two problems, and one fix
+does not close both.
+
+<Callout kind="warn">
+Keep the shared parser and the booking-v3 hint apart. Intake's tag and a matching subject
+line are not proof of a shared cause. The counts below are computed from unique report ids,
+the tenant directory and the supplied cause rules.
+</Callout>
 
 ## What the desk filed
 
 The desk merges on the subject line alone, the rule in
-[decision 0001](/kb/decisions/0001-dedupe-by-subject). #4471 now holds more than one
-subject line, so it holds more than the rule allows. This is what the desk's own logic
-makes of the merged reports:
+[decision 0001](/kb/decisions/0001-dedupe-by-subject). #4471 now holds more than one subject
+line, so it holds more than that rule allows. This is what the desk's own logic makes of the
+merged reports:
 
 <CauseTable ticket={4471} />
 
-Intake tags a report from the reporter's browser, and it is a guess. The cause is not the
-tag: it is the tenant's locale and the booking form that tenant runs. Counting by tag
-splits the ticket the wrong way.
+Intake tags a report from the reporter's browser, and it is a guess. The cause is not the tag:
+it is the tenant's locale and the booking form that tenant runs.
 
 ## What the reports hold
 
 <ProblemsTable />
 
-## The three problems
+## The two problems
 
-**Month and day swapped in the shared parser.** The parser reads every date month first.
-A tenant that writes the day first gets a flipped date, and its people see the booking on
-the wrong day. Tenants on booking-v2, arriving by app or by email.
+**Month and day swapped in the shared parser.** The parser reads every date month first. A
+tenant that writes the day first gets a flipped date, and its people see the booking on the
+wrong day. These are the app, email and booking-v2 form reports.
 
-**The booking form prints the wrong order for the tenant.** booking-v3 prints MM/DD/YYYY.
-A day-first tenant reads that hint and types the month first, as it was told to, and the
-form reads the date the tenant's way. Same symptom, different cause, different fix: the
-form and the parser disagree about the same field.
-
-**A one-day move, not a swap.** These reports were read by the desk as a one-day move, and
-filed under the parser's cause because the subject matched. Their dates shift by one day,
-across a timezone or a daylight-saving change. Month and day are not swapped here, so the
-parser's fix will not close them.
+**The booking form prints the wrong order for the tenant.** booking-v3 prints MM/DD/YYYY. A
+day-first tenant reads that hint and types the month first, as it was told to, and the form
+reads the date the tenant's way. Same symptom, different cause, different fix: the form and
+the parser disagree about the same field. These are the form reports of the booking-v3
+tenants.
 
 ## What the desk should do
 
-- Split #4471 into three tickets, one per problem, each with the count in the table above.
+- Split #4471 into two tickets, one per problem, each with the count in the table above.
 - Fix the parser to read the tenant's date order instead of month first.
 - Fix booking-v3: it prints MM/DD/YYYY to tenants who write the day first.
-- Move the one-day-move reports out of the parser's ticket, and give them their own.
 - Record a new decision. The merge rule in
   [decision 0001](/kb/decisions/0001-dedupe-by-subject) merges on the subject line, and a
   subject line cannot tell a swapped date from a shifted one. A decision is never edited
   after it is accepted, so this one is replaced, not corrected.
-
-<Callout kind="warn">
-Do not count by intake's tag, and do not count rows. The export repeats reports, and the
-tag is wrong often enough to change the split.
-</Callout>
+- Look at the open questions above. They are counted in the parser group, where the desk
+  files them, and no root cause is established for them yet.
 
 ## Lessons
 
-- One ticket can hold several bugs. Merge early, count once, but split by cause.
+- One ticket can hold more than one bug. Merge early, count once, but split by cause.
 - A duplicate is one id. The export gives the same report more than once.
 - A tag from intake is a guess. Read the tenant, and read the form the tenant runs.
 

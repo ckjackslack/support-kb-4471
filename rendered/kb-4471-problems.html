@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!----><title>#4471 reviewed: two date problems in one ticket · support kb</title>
+		
+		
+		
+		
+  <style>:root { --bg: #fbfaf7; --fg: #1d1d1b; --muted: #6b6a66; --line: #e3e0d8; --accent: #2f6f5e; --warn: #b4501f; --warn-bg: #fbeee6; --note-bg: #eef5f2; --mono: ui-monospace, "Cascadia Code", Menlo, monospace; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #171716; --fg: #ecebe6; --muted: #9c9a93; --line: #34332f; --accent: #6fbfa6; --warn: #f0905d; --warn-bg: #3a2418; --note-bg: #1d2c27; }
+}
+body { margin: 0px; background: var(--bg); color: var(--fg); font: 16px / 1.6 system-ui, sans-serif; }
+.kb table { border-collapse: collapse; width: 100%; margin: 1rem 0px; font-size: 0.92rem; }
+.kb th, .kb td { border-bottom: 1px solid var(--line); padding: 0.35rem 0.5rem; text-align: left; }
+.kb code { font-family: var(--mono); font-size: 0.88em; }
+.kb a { color: var(--accent); }
+.kb.svelte-e2jw2j { max-width: 760px; margin: 0px auto; padding: 2rem 16px 4rem; }
+.crumb.svelte-e2jw2j { font: .8rem var(--mono); text-decoration: none; color: var(--muted); }
+h1.svelte-e2jw2j { margin: 0.25rem 0px 0.5rem; line-height: 1.2; }
+.meta.svelte-e2jw2j { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; color: var(--muted); font-size: 0.85rem; margin: 0px; }
+.status.svelte-e2jw2j { border: 1px solid var(--line); border-radius: 99px; padding: 0px 0.6rem; }
+.stale.svelte-e2jw2j { color: var(--warn); font-weight: 600; }
+.banner.svelte-e2jw2j { background: var(--warn-bg); color: var(--warn); padding: 0.6rem 1rem; border-radius: 6px; }
+footer.svelte-e2jw2j { margin-top: 3rem; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--line); padding-top: 1rem; }
+aside.svelte-17bri61 { border-left: 4px solid var(--accent); padding: 0.5rem 1rem; margin: 1rem 0px; background: var(--note-bg); }
+aside.warn.svelte-17bri61 { border-color: var(--warn); background: var(--warn-bg); }
+.sum.svelte-12oyimm { font-size: 1.1rem; }
+.tags.svelte-12oyimm, .note.svelte-12oyimm { color: var(--muted); font-size: 0.85em; }
+.wrong.svelte-12oyimm td:where(.svelte-12oyimm) { background: var(--warn-bg); }
+.wrong.svelte-12oyimm td:where(.svelte-12oyimm):last-child { color: var(--warn); font-weight: 600; }
+.sum.svelte-1wuj3kx { font-size: 1.1rem; }
+.detail.svelte-1wuj3kx { color: var(--muted); font-size: 0.9em; }
+.lede.svelte-1wuj3kx { color: var(--muted); }
+.total.svelte-1wuj3kx td:where(.svelte-1wuj3kx) { border-top: 2px solid var(--line); }
+.notes.svelte-1wuj3kx { color: var(--muted); font-size: 0.9em; }
+.notes.svelte-1wuj3kx li:where(.svelte-1wuj3kx) { margin-bottom: 0.35rem; }
+h3.svelte-1wuj3kx { margin-top: 2rem; }
+.stamp.svelte-1280m42 { margin: 2rem 0px 0px; font: .85rem var(--mono); color: var(--muted); }
+.stamp.svelte-1280m42 b:where(.svelte-1280m42) { color: var(--accent); letter-spacing: 0.04em; }
+.missing.svelte-1280m42 { color: var(--warn); }</style></head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents"><!--[--><!--[0--><!--[--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 reviewed: two date problems in one ticket</h1> <p class="meta svelte-e2jw2j"><span>owner <b>ckjackslack</b></span> <span class="status investigated svelte-e2jw2j">investigated</span> <span class="svelte-e2jw2j">reviewed 2026-10-28 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p>The <a href="/kb/incidents/4471">original incident page</a> says one issue and one fix queued. Its own
+rendered cause table contradicts that conclusion. The ticket holds two problems, and one fix
+does not close both.</p> <aside class="warn svelte-17bri61"><!---->Keep the shared parser and the booking-v3 hint apart. Intake's tag and a matching subject
+line are not proof of a shared cause. The counts below are computed from unique report ids,
+the tenant directory and the supplied cause rules.<!----></aside><!----> <h2>What the desk filed</h2> <p>The desk merges on the subject line alone, the rule in <a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a>. #4471 now holds more than one subject
+line, so it holds more than that rule allows. This is what the desk’s own logic makes of the
+merged reports:</p> <p class="sum svelte-12oyimm"><strong>412</strong> reports merged into #4471 · <strong>2</strong> causes</p> <table><thead><tr><th>cause</th><th>reports</th><th>tagged as</th><th>tenants</th><th>seen</th><th></th></tr></thead><tbody><!--[--><tr class="svelte-12oyimm"><td class="svelte-12oyimm"><code>parser</code></td><td class="svelte-12oyimm">379</td><td class="tags svelte-12oyimm">parser ×356 · hint ×23</td><td class="svelte-12oyimm">11</td><td class="svelte-12oyimm">2026-04-01 → 2026-10-04</td><td class="svelte-12oyimm">#4471</td></tr><tr class="svelte-12oyimm wrong"><td class="svelte-12oyimm"><code>hint</code></td><td class="svelte-12oyimm">33</td><td class="tags svelte-12oyimm">hint ×18 · parser ×15</td><td class="svelte-12oyimm">3</td><td class="svelte-12oyimm">2026-04-17 → 2026-09-22</td><td class="svelte-12oyimm">not this ticket — no ticket of its own</td></tr><!--]--></tbody></table> <!--[--><!--[0--><p class="note svelte-12oyimm">5 reports read as a one-day move; filed under <code>parser</code> by tenant.</p><!--]--><!--[-1--><!--]--><!--]--><!----> <p>Intake tags a report from the reporter’s browser, and it is a guess. The cause is not the tag:
+it is the tenant’s locale and the booking form that tenant runs.</p> <h2>What the reports hold</h2> <p class="sum svelte-1wuj3kx"><strong>412</strong> reports in #4471, split into <strong>2</strong> problems ·
+  the export holds 427 rows, so 15 of them repeat a report</p> <table><thead><tr><th>problem</th><th>reports</th><th>tenants</th><th>cause</th><th>seen</th><th>what it is</th></tr></thead><tbody><!--[--><tr><td><strong>Month and day swapped in the shared parser</strong></td><td>379</td><td>11</td><td><code>parser</code></td><td>2026-04-01 → 2026-10-04</td><td class="detail svelte-1wuj3kx">The parser reads every date month first. Tenants that write the day first get flipped dates.</td></tr><tr><td><strong>The booking form prints the wrong order for the tenant</strong></td><td>33</td><td>3</td><td><code>hint</code></td><td>2026-04-17 → 2026-09-22</td><td class="detail svelte-1wuj3kx">booking-v3 prints MM/DD/YYYY, so the tenant types month first, and the form reads it the tenant’s way.</td></tr><!--]--><tr class="total svelte-1wuj3kx"><td class="svelte-1wuj3kx"><strong>total</strong></td><td class="svelte-1wuj3kx">412</td><td class="svelte-1wuj3kx"></td><td class="svelte-1wuj3kx"></td><td class="svelte-1wuj3kx"></td><td class="svelte-1wuj3kx"></td></tr></tbody></table> <ul class="notes svelte-1wuj3kx"><li class="svelte-1wuj3kx">Intake's tag is a guess from the reporter's browser. It names the wrong cause for
+    38 of the 412 reports, so it cannot be used to count.</li> <li class="svelte-1wuj3kx">The ticket holds 12 different subject lines. One subject, merged many times,
+    is not what #4471 contains.</li> <li class="svelte-1wuj3kx">5 of the 379 parser reports were read by the desk as a
+    one-day move. They are counted in that cause, where the desk files them, and are listed
+    below as open questions.</li></ul> <!--[0--><h3 class="svelte-1wuj3kx">Open questions inside the parser group</h3> <p class="lede svelte-1wuj3kx">These read as a one-day move, not a month and day swap. No root cause is established for
+    them, and they are not counted again.</p> <table class="exceptions"><thead><tr><th>report</th><th>tenant</th><th>channel</th><th>what the reporter wrote</th></tr></thead><tbody><!--[--><tr><td><code>R-41202</code></td><td>kettle.books</td><td>email</td><td class="detail svelte-1wuj3kx">Invite says Tuesday 12 May. Calendar says Monday 11 May. My client turned up on the Monday. We had coffee.</td></tr><tr><td><code>R-41209</code></td><td>alder.physio</td><td>app</td><td class="detail svelte-1wuj3kx">Every booking in June is one day off. Only June. Why only June.</td></tr><tr><td><code>R-41236</code></td><td>nine.lanterns</td><td>app</td><td class="detail svelte-1wuj3kx">The invite arrived before I made the booking. I would like to know how.</td></tr><tr><td><code>R-41344</code></td><td>pale.harbour</td><td>email</td><td class="detail svelte-1wuj3kx">Client in Lisbon got Tuesday. Client in Toronto got Monday. Same meeting. We held it twice.</td></tr><tr><td><code>R-41620</code></td><td>lantern.row</td><td>email</td><td class="detail svelte-1wuj3kx">Tuesday 6 October showed as Monday. I moved it myself. I have stopped reporting these but my colleague says it helps you.</td></tr><!--]--></tbody></table><!--]--><!----> <h2>The two problems</h2> <p><strong>Month and day swapped in the shared parser.</strong> The parser reads every date month first. A
+tenant that writes the day first gets a flipped date, and its people see the booking on the
+wrong day. These are the app, email and booking-v2 form reports.</p> <p><strong>The booking form prints the wrong order for the tenant.</strong> booking-v3 prints MM/DD/YYYY. A
+day-first tenant reads that hint and types the month first, as it was told to, and the form
+reads the date the tenant’s way. Same symptom, different cause, different fix: the form and
+the parser disagree about the same field. These are the form reports of the booking-v3
+tenants.</p> <h2>What the desk should do</h2> <ul><li>Split #4471 into two tickets, one per problem, each with the count in the table above.</li> <li>Fix the parser to read the tenant’s date order instead of month first.</li> <li>Fix booking-v3: it prints MM/DD/YYYY to tenants who write the day first.</li> <li>Record a new decision. The merge rule in <a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a> merges on the subject line, and a
+subject line cannot tell a swapped date from a shifted one. A decision is never edited
+after it is accepted, so this one is replaced, not corrected.</li> <li>Look at the open questions above. They are counted in the parser group, where the desk
+files them, and no root cause is established for them yet.</li></ul> <h2>Lessons</h2> <ul><li>One ticket can hold more than one bug. Merge early, count once, but split by cause.</li> <li>A duplicate is one id. The export gives the same report more than once.</li> <li>A tag from intake is a guess. Read the tenant, and read the form the tenant runs.</li></ul> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-W05C-MR14</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!----><!--]--><!--]--> <!--[-1--><div id="svelte-announcer" aria-live="assertive" aria-atomic="true" style="position: absolute; left: 0; top: 0; clip: rect(0 0 0 0); clip-path: inset(50%); overflow: hidden; white-space: nowrap; width: 1px; height: 1px"><!----></div><!--]--><!--]-->
+			
+			
+		</div>
+  
+
+</body></html>
