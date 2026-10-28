@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../../../_app/immutable/entry/start.BKDqdKyI.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/DLPHJf5b.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/BFzzk_oB.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/B3ck760V.js" rel="modulepreload">
+		<link href="../../../_app/immutable/entry/app.lIwZrOCE.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/BnpOIMme.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/BG5v0sKB.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/DzrvIRbX.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/CyMa8FXv.js" rel="modulepreload">
+		<link href="../../../_app/immutable/nodes/0.DjykM_qP.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/DVJ5pYx9.js" rel="modulepreload">
+		<link href="../../../_app/immutable/nodes/5.DL7M1Tan.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/BrH2a11H.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/6F5Jptlk.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/0CSW6DJc.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/TMmKKphW.js" rel="modulepreload">
+		<!--e2jw2j--><!----><title>#4471 · what it really holds · support kb</title>
+		<link href="../../../_app/immutable/assets/runbook.BhhgOc_n.css" rel="stylesheet">
+		<link href="../../../_app/immutable/assets/Callout.yLErXQDM.css" rel="stylesheet">
+		<link href="../../../_app/immutable/assets/CauseTable.DuKfINX_.css" rel="stylesheet">
+		<link href="../../../_app/immutable/assets/5.CoDwDYhv.css" rel="stylesheet">
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents"><!--[--><!--[0--><!--[--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 · what it really holds</h1> <p class="meta svelte-e2jw2j"><span>owner <b>support desk</b></span> <span class="status open svelte-e2jw2j">open</span> <span class="svelte-e2jw2j">reviewed 2026-10-28 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p>#4471 is closed as one known issue, with one fix queued. The reports it holds are not one
+issue. They are three, and each of them needs its own fix, so the ticket has to split.</p> <h2>What the desk filed</h2> <p>The desk merges on the subject line alone, the rule in <a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a>. #4471 now holds more than one
+subject line, so it holds more than the rule allows. This is what the desk’s own logic
+makes of the merged reports:</p> <p class="sum svelte-12oyimm"><strong>412</strong> reports merged into #4471 · <strong>2</strong> causes</p> <table><thead><tr><th>cause</th><th>reports</th><th>tagged as</th><th>tenants</th><th>seen</th><th></th></tr></thead><tbody><!--[--><tr class="svelte-12oyimm"><td class="svelte-12oyimm"><code>parser</code></td><td class="svelte-12oyimm">379</td><td class="tags svelte-12oyimm">parser ×356 · hint ×23</td><td class="svelte-12oyimm">11</td><td class="svelte-12oyimm">2026-04-01 → 2026-10-04</td><td class="svelte-12oyimm">#4471</td></tr><tr class="svelte-12oyimm wrong"><td class="svelte-12oyimm"><code>hint</code></td><td class="svelte-12oyimm">33</td><td class="tags svelte-12oyimm">hint ×18 · parser ×15</td><td class="svelte-12oyimm">3</td><td class="svelte-12oyimm">2026-04-17 → 2026-09-22</td><td class="svelte-12oyimm">not this ticket — no ticket of its own</td></tr><!--]--></tbody></table> <!--[--><!--[0--><p class="note svelte-12oyimm">5 reports read as a one-day move; filed under <code>parser</code> by tenant.</p><!--]--><!--[-1--><!--]--><!--]--><!----> <p>Intake tags a report from the reporter’s browser, and it is a guess. The cause is not the
+tag: it is the tenant’s locale and the booking form that tenant runs. Counting by tag
+splits the ticket the wrong way.</p> <h2>What the reports hold</h2> <p class="sum svelte-1wuj3kx"><strong>412</strong> reports in #4471, split into <strong>3</strong> problems ·
+  the export holds 427 rows, so 15 of them repeat a report</p> <table><thead><tr><th>problem</th><th>reports</th><th>tenants</th><th>cause</th><th>what it is</th></tr></thead><tbody><!--[--><tr><td><strong>Month and day swapped in the shared parser</strong></td><td>374</td><td>11</td><td><code>parser</code></td><td class="detail svelte-1wuj3kx">The parser reads every date month first. Tenants that write the day first get flipped dates.</td></tr><tr><td><strong>The booking form prints the wrong order for the tenant</strong></td><td>33</td><td>3</td><td><code>hint</code></td><td class="detail svelte-1wuj3kx">booking-v3 prints MM/DD/YYYY, so the tenant types month first, and the form reads it the tenant’s way.</td></tr><tr><td><strong>A one-day move, not a swap</strong></td><td>5</td><td>5</td><td><code>read as a one-day move</code></td><td class="detail svelte-1wuj3kx">Dates shift by one day, usually across a timezone or a daylight-saving change.</td></tr><!--]--><tr class="total svelte-1wuj3kx"><td class="svelte-1wuj3kx"><strong>total</strong></td><td class="svelte-1wuj3kx">412</td><td class="svelte-1wuj3kx"></td><td class="svelte-1wuj3kx"></td><td class="svelte-1wuj3kx"></td></tr></tbody></table> <ul class="notes svelte-1wuj3kx"><li class="svelte-1wuj3kx">The desk files <code>379</code> reports under <code>parser</code>.
+    5 of them are the one-day move, so the parser holds 374.</li> <li class="svelte-1wuj3kx">Intake's tag is a guess from the reporter's browser. It names the wrong cause for
+    38 of the 412 reports, so it cannot be used to count.</li> <li class="svelte-1wuj3kx">The ticket holds 12 different subject lines. One subject, merged many times,
+    is not what #4471 contains.</li></ul><!----> <h2>The three problems</h2> <p><strong>Month and day swapped in the shared parser.</strong> The parser reads every date month first.
+A tenant that writes the day first gets a flipped date, and its people see the booking on
+the wrong day. Tenants on booking-v2, arriving by app or by email.</p> <p><strong>The booking form prints the wrong order for the tenant.</strong> booking-v3 prints MM/DD/YYYY.
+A day-first tenant reads that hint and types the month first, as it was told to, and the
+form reads the date the tenant’s way. Same symptom, different cause, different fix: the
+form and the parser disagree about the same field.</p> <p><strong>A one-day move, not a swap.</strong> These reports were read by the desk as a one-day move, and
+filed under the parser’s cause because the subject matched. Their dates shift by one day,
+across a timezone or a daylight-saving change. Month and day are not swapped here, so the
+parser’s fix will not close them.</p> <h2>What the desk should do</h2> <ul><li>Split #4471 into three tickets, one per problem, each with the count in the table above.</li> <li>Fix the parser to read the tenant’s date order instead of month first.</li> <li>Fix booking-v3: it prints MM/DD/YYYY to tenants who write the day first.</li> <li>Move the one-day-move reports out of the parser’s ticket, and give them their own.</li> <li>Record a new decision. The merge rule in <a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a> merges on the subject line, and a
+subject line cannot tell a swapped date from a shifted one. A decision is never edited
+after it is accepted, so this one is replaced, not corrected.</li></ul> <aside class="warn svelte-17bri61"><!---->Do not count by intake's tag, and do not count rows. The export repeats reports, and the
+tag is wrong often enough to change the split.<!----></aside><!----> <h2>Lessons</h2> <ul><li>One ticket can hold several bugs. Merge early, count once, but split by cause.</li> <li>A duplicate is one id. The export gives the same report more than once.</li> <li>A tag from intake is a guess. Read the tenant, and read the form the tenant runs.</li></ul> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-W05C-MR14</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!----><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_13dk01c = {
+						base: new URL("../../..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../../../_app/immutable/entry/start.BKDqdKyI.js"),
+						import("../../../_app/immutable/entry/app.lIwZrOCE.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 5],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+  </body>
+</html>
