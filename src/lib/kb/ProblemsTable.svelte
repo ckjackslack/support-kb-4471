@@ -8,6 +8,9 @@
   // problem inside it holds, so the desk can split the ticket and count once.
   const TICKET = 4471;
 
+  // Where each problem's ticket lives, so the desk can follow the count to its ticket.
+  let { ticketLinks = {} }: { ticketLinks?: Record<string, string> } = $props();
+
   const rows = $derived(reports as Report[]);
   const unique = $derived(uniqueById(rows));
   const merged = $derived(unique.filter((r) => r.mergedInto === TICKET));
@@ -49,13 +52,13 @@
 </script>
 
 <p class="sum">
-  <strong>{total}</strong> reports in #{TICKET}, split into <strong>{problems.length}</strong> problems ·
+  All <strong>{total}</strong> in #{TICKET}, split into <strong>{problems.length}</strong> problems ·
   the export holds {rows.length} rows, so {repeatRows} of them repeat a report
 </p>
 
 <table>
   <thead>
-    <tr><th>problem</th><th>reports</th><th>tenants</th><th>cause</th><th>seen</th><th>what it is</th></tr>
+    <tr><th>problem</th><th>reports</th><th>tenants</th><th>cause</th><th>seen</th><th>ticket</th><th>what it is</th></tr>
   </thead>
   <tbody>
     {#each problems as p (p.cause)}
@@ -65,12 +68,20 @@
         <td>{p.tenants}</td>
         <td><code>{p.cause}</code></td>
         <td>{p.first} → {p.last}</td>
+        <td>
+          {#if ticketLinks[p.cause]}
+            <a href={ticketLinks[p.cause]}>#{p.cause === 'parser' ? 1 : 2}</a>
+          {:else}
+            —
+          {/if}
+        </td>
         <td class="detail">{p.detail}</td>
       </tr>
     {/each}
     <tr class="total">
       <td><strong>total</strong></td>
       <td>{total}</td>
+      <td></td>
       <td></td>
       <td></td>
       <td></td>
@@ -82,7 +93,7 @@
 <ul class="notes">
   <li>
     Intake's tag is a guess from the reporter's browser. It names the wrong cause for
-    {taggedWrong} of the {total} reports, so it cannot be used to count.
+    {taggedWrong} of the {total} in the ticket, so it cannot be used to count.
   </li>
   <li>
     The ticket holds {subjects} different subject lines. One subject, merged many times,

@@ -12,6 +12,11 @@ signature: 'v1.eyJzdWIiOiI5OTEwIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpY
   import CauseTable from '#lib/kb/CauseTable.svelte';
   import Callout from '#lib/kb/Callout.svelte';
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
+
+  const ticketLinks = {
+    parser: 'https://github.com/ckjackslack/support-kb-4471/issues/1',
+    hint: 'https://github.com/ckjackslack/support-kb-4471/issues/2',
+  };
 </script>
 
 The [original incident page](/kb/incidents/4471) says one issue and one fix queued. Its own
@@ -38,7 +43,7 @@ it is the tenant's locale and the booking form that tenant runs.
 
 ## What the reports hold
 
-<ProblemsTable />
+<ProblemsTable {ticketLinks} />
 
 ## The two problems
 

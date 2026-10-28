@@ -56,6 +56,11 @@ in this repository:
 379 + 33 = 412, every report in #4471. The five reports the desk read as a one-day move
 stay counted in the parser group, where the desk files them; the page and issue #1 list
 them as open questions, with their own words, and no root cause is claimed for them.
+Issue #3 was a separate ticket for those five and is withdrawn and closed.
+
+Each ticket says its count once, as "379 reports" or "33 reports", and every other number
+in it is written so it cannot be read as a count. `scripts/analyze.mjs` writes the ticket
+bodies and checks that rule before they are filed.
 
 The export ships without an app shell, so this repository adds one: SvelteKit with mdsvex,
 the same `#lib` alias the pages import, and a static adapter.

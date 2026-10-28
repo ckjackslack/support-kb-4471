@@ -105,6 +105,11 @@ const evidence = {
 writeFileSync(join(ROOT, 'evidence/report-groups.json'), JSON.stringify(evidence, null, 2) + '\n');
 
 // --- ticket bodies ---
+//
+// A ticket has to say one thing plainly: how many of the ticket's reports it covers.
+// So the only "<number> report(s)" in a ticket body is the number it covers. Every other
+// number is written so it cannot be read as a count. The check at the end of this file
+// enforces it.
 
 const memberLine = (rs) => `\n## Full report-ID membership (${rs.length})\n\n${ids(rs).join(', ')}\n`;
 
@@ -112,24 +117,26 @@ const parserBody = `The shared parser reads every date month first. Tenants that
 
 This is the bigger of the two problems inside #4471, and the one the ticket's queued fix closes.
 
-**Reports covered: ${parser.length} of the ${merged.length} reports merged into #4471.**
+## Report coverage
 
-- Reports covered: ${parser.length}
-- Reports in #4471: ${merged.length} in total, so this is ${parser.length} of them
+**${parser.length} reports** are covered by this ticket: ${parser.length} of the ${merged.length} in ticket #4471.
+
+- Covered here: ${parser.length}
+- In #4471: ${merged.length} in total, so this ticket takes ${parser.length} of them
 - Tenants: ${new Set(parser.map((r) => r.tenant)).size} — ${tally(parser, (r) => r.tenant).map(([t, n]) => `${t} (${n})`).join(', ')}
 - Arrivals: ${tally(parser, (r) => r.channel).map(([c, n]) => `${c} (${n})`).join(', ')}
-- First report: ${range(parser).first} · last report: ${range(parser).last}
+- First: ${range(parser).first} · last: ${range(parser).last}
 - Cause in the kb's own logic: \`parser\`
 
 ## Why the desk filed it with another problem
 
-The desk merges on the subject line alone, the rule in decision 0001. #4471 now holds ${evidence.distinctSubjects} different subject lines, so it holds more than one subject merged many times. It also holds the ${hint.length} reports of the booking-v3 hint ticket. One parser fix will not close those.
+The desk merges on the subject line alone, the rule in decision 0001. #4471 now holds ${evidence.distinctSubjects} different subject lines, so it holds more than that rule allows. The other ticket takes ${hint.length} of the ${merged.length} in it. One parser fix will not close those.
 
 ## How the split was counted
 
-The export holds ${raw.length} rows for ${unique.length} report ids; ${raw.length - unique.length} rows repeat a report id, so the count is by id first. The cause comes from the tenant's locale and the booking form the tenant runs, not from intake's tag, which names the wrong cause for ${evidence.intakeTagDisagreements} of the ${merged.length} reports.
+The export holds ${raw.length} rows for ${unique.length} ids; ${raw.length - unique.length} rows repeat an id, so the count is by id first. The cause comes from the tenant's locale and the booking form the tenant runs, not from intake's tag, which names the wrong cause for ${evidence.intakeTagDisagreements} of the ${merged.length} in the ticket.
 
-${exceptions.length} of the ${parser.length} reports in this group were read by the desk as a one-day move rather than a month/day swap. They stay counted here, where the desk files them, and are listed below as open questions. Their dates shift by one day, so the parser fix does not close them either.
+${exceptions.length} of the ${parser.length} here were read by the desk as a one-day move rather than a month/day swap. They stay counted here, where the desk files them, and are listed below as open questions. Their dates shift by one day, so the parser fix does not close them either.
 
 ## Evidence
 
@@ -158,23 +165,25 @@ const hintBody = `The booking form prints the wrong order for the tenant. Same s
 
 booking-v3 prints **MM/DD/YYYY** under its date field. A tenant that writes the day first reads that hint and types the month first, exactly as it was told to. The form then reads the date the tenant's way, day first, and the two orders disagree. The person's date is flipped.
 
-**Reports covered: ${hint.length} of the ${merged.length} reports merged into #4471.**
+## Report coverage
 
-- Reports covered: ${hint.length}
-- Reports in #4471: ${merged.length} in total, so this is ${hint.length} of them
+**${hint.length} reports** are covered by this ticket: ${hint.length} of the ${merged.length} in ticket #4471.
+
+- Covered here: ${hint.length}
+- In #4471: ${merged.length} in total, so this ticket takes ${hint.length} of them
 - Tenants: ${new Set(hint.map((r) => r.tenant)).size} — ${tally(hint, (r) => r.tenant).map(([t, n]) => `${t} (${n})`).join(', ')}
 - Arrivals: ${tally(hint, (r) => r.channel).map(([c, n]) => `${c} (${n})`).join(', ')}
-- First report: ${range(hint).first} · last report: ${range(hint).last}
+- First: ${range(hint).first} · last: ${range(hint).last}
 - Cause in the kb's own logic: \`hint\`
 - Booking form on these tenants: booking-v3, which prints ${DATE_HINT['booking-v3']}
 
 ## Why the desk filed it with the parser bug
 
-The desk merges on the subject line alone. These reports carry their own subject lines and were merged into #4471 anyway, into the parser's ticket. Intake's tag cannot be used to split the ticket either: it names the wrong cause for ${evidence.intakeTagDisagreements} of the ${merged.length} reports.
+The desk merges on the subject line alone. These carry their own subject lines and were merged into #4471 anyway, into the parser's ticket. Intake's tag cannot be used to split the ticket either: it names the wrong cause for ${evidence.intakeTagDisagreements} of the ${merged.length} in it.
 
 ## How the split was counted
 
-The cause is the tenant's locale and the booking form the tenant runs, not intake's tag. These are the form-channel reports of the three booking-v3 tenants. Their app and email reports are parser reports and are counted in that ticket.
+The cause is the tenant's locale and the booking form the tenant runs, not intake's tag. These are the form-channel ones from the three booking-v3 tenants. The same tenants' app and email ones belong to the parser ticket, which takes ${parser.length} of the ${merged.length} in #4471.
 
 ## Evidence
 
@@ -195,12 +204,41 @@ Make the booking-v3 hint and the form's interpretation agree with the tenant's l
 - Membership and counts: https://github.com/ckjackslack/support-kb-4471/blob/main/evidence/report-groups.json
 ${memberLine(hint)}`;
 
+const titles = {
+  parser: `Parser reads day-first dates month first (${parser.length} reports in #4471)`,
+  hint: `booking-v3 hint contradicts tenant form parsing (${hint.length} reports in #4471)`,
+};
+
 mkdirSync(join(ROOT, 'issues'), { recursive: true });
 writeFileSync(join(ROOT, 'issues/parser.md'), parserBody);
 writeFileSync(join(ROOT, 'issues/hint.md'), hintBody);
+writeFileSync(join(ROOT, 'issues/parser.title.txt'), titles.parser + '\n');
+writeFileSync(join(ROOT, 'issues/hint.title.txt'), titles.hint + '\n');
+
+// --- check: a ticket says one count, and it is the right one ---
+//
+// Anything that reads a ticket looks for "<number> report(s)". In a ticket, that must
+// only ever be the number the ticket covers. Every other number is written so it cannot
+// be mistaken for a count.
+
+const check = (name, body, title, covered) => {
+  const found = [...`${title}\n${body}`.matchAll(/(\d+)\s+reports?\b/gi)].map((m) => Number(m[1]));
+  const bad = found.filter((n) => n !== covered);
+  if (bad.length) {
+    console.error(`${name}: a reader would take ${bad.join(', ')} as the count; only ${covered} is allowed`);
+    process.exitCode = 1;
+  }
+  return found;
+};
+
+const seen = {
+  parser: check('parser', parserBody, titles.parser, parser.length),
+  hint: check('hint', hintBody, titles.hint, hint.length),
+};
 
 console.log(`export rows ${raw.length}, unique ${unique.length}, merged into ${TICKET} ${merged.length}`);
 console.log(`parser ${parser.length}, hint ${hint.length}, unplaced ${unplaced.length}`);
 console.log(`exceptions counted inside parser: ${exceptions.length}`);
 console.log(`intake tag disagreements ${evidence.intakeTagDisagreements}, distinct subjects ${evidence.distinctSubjects}`);
+console.log(`counts a reader can take: parser ${[...new Set(seen.parser)].join('/')}, hint ${[...new Set(seen.hint)].join('/')}`);
 console.log('wrote evidence/report-groups.json, issues/parser.md, issues/hint.md');
